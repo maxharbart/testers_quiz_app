@@ -1,3 +1,5 @@
+//ResultComponent.js
+
 import React from 'react';
 
 

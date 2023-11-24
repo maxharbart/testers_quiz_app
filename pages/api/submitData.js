@@ -3,7 +3,7 @@ import keys from "../../key";
 
 export default function handler(req, res) {
     try {
-        const { inputValue } = req.body;
+        const { inputValue, step } = req.body;
 
         if (!inputValue) {
             return res.status(400).send(JSON.stringify({ error: "inputValue is a required field" }));
@@ -23,7 +23,7 @@ export default function handler(req, res) {
 
             const opt = {
                 spreadsheetId: keys.sheet_id,
-                range: 'Sheet1!A3:A',
+                range: `Sheet1!A${step + 2}`, // +2 to start from row 3 (assuming row 1 is header)
                 valueInputOption: 'USER_ENTERED',
                 resource: {
                     values: valuesToAppend,
